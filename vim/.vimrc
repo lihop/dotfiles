@@ -13,32 +13,38 @@ Plugin 'gmarik/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 Plugin 'tpope/vim-fugitive'
 Plugin 'chase/vim-ansible-yaml'
-
+Plugin 'flazz/vim-colorschemes'
+Plugin 'godlygeek/csapprox'
 " All of your Plugins must be added before the following line
+
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
-syntax on
+if has("syntax")
+    "Enable syntax highlighting
+    syntax enable 
+    " Set 256 color terminal support
+    set t_Co=256
+    set background=dark
+    colorscheme molokai 
+endif
 
-" FILE SPECIFC 
-
-" Makefile
-    " Don't replace tabs with spaces
-    autocmd FileType make setlocal noexpandtab 
+if has("autocmd")
+    " Don't replace tabs with spaces in Makefile
+    autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
+    " Automatically strip traling whitespace on file save
+    autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt :call StripTrailingWhitespace() 
+    " Don't treat json as javascript
+    autocmd BufRead,BufNewFile *.json set filetype=json
+endif
 
 " LaTeX (rubber) macro for compiling
 nnoremap <leader>c :w<CR>:!rubber --pdf --warn all %<CR>
 
 " View PDF macro; '%:r' is current file's root (base) name.
 nnoremap <leader>v :!mupdf %:r.pdf &<CR><CR>
+
+" Load local machine settings if they exist
+if filereadable(glob("$HOME/.vimrc.local"))
+	source $HOME/.vimrc.local
+endif
