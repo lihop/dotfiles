@@ -1,54 +1,36 @@
-! --- ~/.Xresources ------------------------------------------------------------
-! ------------------------------------------------------------------------------
-! --- Terminal Colors ----------------------------------
+!
+! .Xresources
+!
 
-! [ terminal colors ]
-!   black / dark gray
-URxvt*color0: #757575
-URxvt*color8: #B8B8B8
-!   red
-URxvt*color1: #FF5F5F
-URxvt*color9: #D78787
-!   green
-URxvt*color2: #DE8A36
-URxvt*color10: #FF9F6F
-!   yellow
-URxvt*color3: #D78787
-URxvt*color11: #FF5F5F
-!   blue
-URxvt*color4: #AF5FD7
-URxvt*color12: #DEA3E5
-!   magenta
-URxvt*color5: #FF87D7
-URxvt*color13: #D7AFAF
-!   cyan
-URxvt*color6: #DEA3E5
-URxvt*color14: #AF5FD7
-!   light gray / white
-URxvt*color7: #B8B8B8
-URxvt*color15: #757575
-
-! [ urxvt ]
-URxvt*background: #261515
-URxvt*foreground: #FFFFFF
-URxvt*cursorColor: #E25454
-
-! ------------------------------------------------------------------------------
-! --- end of terminal colors section -------------------------------------------
-! ------------------------------------------------------------------------------
-
-!-------------------------------------------------------------------------------
-! --- Font Declarations --------------------------------
-
-URxvt.font: xft:DejaVu Sans Mono:pixelsize=14
-
-! ------------------------------------------------------------------------------
-! --- end of font declarations -------------------------
-
-! ------------------------------------------------------------------------------
-! --- additional urxvt settings ------------------------
+! Set color scheme
+#include ".Xcolors"
 
 URxvt.scrollBar: false
+URxvt.saveLines: 8192
+URxvt.internalBorder: 4
+URxvt.externalBorder: 0
+URxvt.highlightSelection: true
+URxvt.loginShell: true
+URxvt.termName: xterm-256color
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=14
+URxvt.boldFont: xft:DejaVu Sans Mono:pixelsize=14:style=Bold
+URxvt.mapAlert: true
+Xft.antialias: false 
+Xft.rgba: rgb
 
-! ------------------------------------------------------------------------------
-! --- end of additional urxvt settings -----------------
+! Set scroll options
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+! Disable scrollback buffer when using secondary scree (e.g. less)
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
+! 
+Urxvt.perl-ext: default,url-select
+Urxvt.keysym.C-i: perl:url-select:select_next
+Urxvt.url-select.launcher: /usr/bin/xdg-open
+Urxvt.url-select.underline: true
