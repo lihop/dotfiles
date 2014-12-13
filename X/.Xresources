@@ -14,8 +14,9 @@ URxvt.loginShell: true
 URxvt.termName: xterm-256color
 URxvt.font: xft:DejaVu Sans Mono:pixelsize=14
 URxvt.boldFont: xft:DejaVu Sans Mono:pixelsize=14:style=Bold
+URxvt.letterSpace: -1
 URxvt.mapAlert: true
-Xft.antialias: false 
+Xft.antialias: true 
 Xft.rgba: rgb
 
 ! Set scroll options
