@@ -26,7 +26,7 @@ if has("syntax")
     " Set 256 color terminal support
     set t_Co=256
     set background=dark
-    colorscheme molokai 
+    silent! colorscheme molokai 
 endif
 
 if has("autocmd")
