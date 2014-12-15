@@ -5,6 +5,7 @@
 ! Set color scheme
 #include ".Xcolors"
 
+URxvt.dynamicColors: on
 URxvt.scrollBar: false
 URxvt.saveLines: 8192
 URxvt.internalBorder: 4
