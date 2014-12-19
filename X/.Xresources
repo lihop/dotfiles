@@ -5,31 +5,7 @@
 URxvt.dynamicColors: on
 URxvt.scrollBar: false
 URxvt.saveLines: 8192
-URxvt.internalBorder: 4
-URxvt.externalBorder: 0
-URxvt.highlightSelection: true
-URxvt.loginShell: true
-URxvt.termName: xterm-256color
 URxvt.font: xft:DejaVu Sans Mono:pixelsize=14
 URxvt.boldFont: xft:DejaVu Sans Mono:pixelsize=14:style=Bold
 URxvt.letterSpace: -1
-URxvt.mapAlert: true
 Xft.antialias: true 
-Xft.rgba: rgb
-
-! Set scroll options
-! do not scroll with output
-URxvt*scrollTtyOutput: false
-! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
-URxvt*scrollWithBuffer: true
-! scroll back to the bottom on keypress
-URxvt*scrollTtyKeypress: true
-! Disable scrollback buffer when using secondary scree (e.g. less)
-URxvt.secondaryScreen: 1
-URxvt.secondaryScroll: 0
-
-! 
-Urxvt.perl-ext: default,url-select
-Urxvt.keysym.C-i: perl:url-select:select_next
-Urxvt.url-select.launcher: /usr/bin/xdg-open
-Urxvt.url-select.underline: true
