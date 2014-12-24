@@ -12,6 +12,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-sleuth'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'godlygeek/csapprox'
