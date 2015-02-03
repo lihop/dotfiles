@@ -20,6 +20,10 @@ sxhkd &
 # default cursor
 xsetroot -cursor_name left_ptr
 
+# xrandr setup
+xrandr --output DFP5 --auto --right-of DFP7
+xrandr --output DFP7 --auto --rotate right
+
 exec dbus-launch xmonad 
 
 
