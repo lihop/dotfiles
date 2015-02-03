@@ -1,0 +1,12 @@
+! Set 'Search' key to 'Escape'
+keycode 133 = Escape
+! Set 'Alt_L' to 'Meta_L'
+keycode 64 = Meta_L
+
+! Clear mod1 and mod3 then set 
+! mod3 to 'Alt_R' and mod1 to 'Meta_L'
+clear mod1
+clear mod3
+add mod1 = Meta_L
+add mod3 = Alt_R
+
