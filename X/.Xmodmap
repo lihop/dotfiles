@@ -8,5 +8,5 @@ keycode 64 = Meta_L
 clear mod1
 clear mod3
 add mod1 = Meta_L
-add mod3 = ISO_Level3_Shift 
+add mod3 = Alt_R
 
