@@ -1,11 +1,18 @@
 Requirements
 ------------
-The directory structure of these dotfiles is designed to be used with [GNU Stow](http://www.gnu.org/software/stow/). This repo also includes the vim plugin manager [Vundle](https://github.com/gmarik/Vundle.vim) and terminal color changer [dynamic-colors](https://github.com/sos4nt/dynamic-colors) as submodules.
+The directory structure of these dotfiles is designed to be used with [GNU Stow](http://www.gnu.org/software/stow/). This repo also includes the vim plugin manager [Vundle](https://github.com/gmarik/Vundle.vim) as a submodule.
+
+Quick Installation
+------------------
+```
+git clone https://github.com/lihop/.dotfiles.git
+.dotfiles/install.sh
+```
 
 Usage
 -----
 ```
-git clone --recursive https://github.com/lihop/dotfiles.git
+git clone --recursive https://github.com/lihop/.dotfiles.git
 ```
 To symlink all the dotfiles:
 ```
