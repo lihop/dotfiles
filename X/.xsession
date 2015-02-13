@@ -14,8 +14,10 @@ if [ -s ~/.Xmodmap ]; then
     xmodmap ~/.Xmodmap
 fi
 
-# use sxhkd
-sxhkd &
+# use sxhkd if it is installed
+if type sxhkd then
+dbus-launch sxhkd
+fi
 
 # default cursor
 xsetroot -cursor_name left_ptr
