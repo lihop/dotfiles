@@ -12,6 +12,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Util.Run
 import XMonad.Hooks.FadeInactive
 import System.IO
+import XMonad.Hooks.SetWMName
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -253,5 +254,6 @@ main = do
  
         -- hooks, layouts
         layoutHook         = smartBorders $ smartSpacing 0 $ avoidStruts $ layoutHook defaultConfig,
-        manageHook         = manageSpawn <+> manageDocks <+> manageHook defaultConfig
+        manageHook         = manageSpawn <+> manageDocks <+> manageHook defaultConfig,
+        startupHook        = setWMName "LG3D"
 }
