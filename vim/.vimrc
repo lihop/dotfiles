@@ -16,6 +16,7 @@ Plugin 'tpope/vim-sleuth'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'godlygeek/csapprox'
+Plugin 'vim-latex-live-preview'
 " All of your Plugins must be added before the following line
 
 call vundle#end()            " required
@@ -44,6 +45,9 @@ nnoremap <leader>c :w<CR>:!rubber --pdf --warn all %<CR>
 
 " View PDF macro; '%:r' is current file's root (base) name.
 nnoremap <leader>v :!mupdf %:r.pdf &<CR><CR>
+
+" vim-latex-live-preview use mupdf as previewer
+let g:livepreview_previewer = 'mupdf-x11'
 
 " Load local machine settings if they exist
 if filereadable(glob("$HOME/.vimrc.local"))
