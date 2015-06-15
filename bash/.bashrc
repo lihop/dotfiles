@@ -12,7 +12,7 @@ set -o vi
 
 export VISUAL=vim
 export EDITOR=$VISUAL
-PATH=$PATH:~/.dynamic-colors/bin
+PATH=$PATH:~/usr/bin:~/.dynamic-colors/bin
 
 # Use previous color scheme
 dynamic-colors init
