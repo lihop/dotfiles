@@ -1,39 +1,23 @@
-Requirements
+Installation
 ------------
-The directory structure of these dotfiles is designed to be used with [GNU Stow](http://www.gnu.org/software/stow/). This repo also includes the vim plugin manager [Vundle](https://github.com/gmarik/Vundle.vim) as a submodule.
-
-Quick Installation
-------------------
-```
-git clone https://github.com/lihop/.dotfiles.git
-.dotfiles/install.sh
-```
+1. Install the dotfiles package using [this](https://github.com/lihop/nixos/blob/master/pkgs/dotfiles.nix) nix expression.
+2. Run the command `dotfiles-update`.
 
 Usage
 -----
 ```
-git clone --recursive https://github.com/lihop/.dotfiles.git
+cd ~/.dotfiles
 ```
 To symlink all the dotfiles:
 ```
-cd ~/.dotfiles
 for dir in */; do stow $dir; done
 ```
-To symlink the dotfiles of an individual application (e.g. vim) use the following from within the `.dotfiles` directory:
+To symlink the dotfiles of an individual application (e.g. xmonad):
 ```
-stow vim
+stow xmonad
 ```
 To remove the symlink:
 ```
-stow -D vim
+stow -D xmonad
 ```  
 
-
-By default, the Vundle submodule is not on a branch. This means that Vundle will not be able to update itself using `git pull`. To check out the master branch, run the following command from within the `.dotfiles` directory:
-```
-git submodule foreach --recursive git checkout master
-```
-To update/install Vundle/Plugins (assuming you have the `vim` directory stowed):
-```
-vim -c VundleUpdate -c quitall
-```

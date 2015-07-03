@@ -1,0 +1,23 @@
+#!/bin/bash
+
+DOTFILES_SRC=git@github.com:lihop/dotfiles.git
+DOTFILES_DIR=$HOME/.dotfiles
+
+download() {
+    git clone $DOTFILES_SRC $DOTFILES_DIR  
+}
+
+update() {
+    if [ ! -d $DOTFILES_DIR ]; then
+        download
+        cd $DOTFILES_DIR
+    else
+        cd $DOTFILES_DIR
+        git pull
+    fi
+    for dir in */; do
+        stow $dir
+    done
+}
+
+update

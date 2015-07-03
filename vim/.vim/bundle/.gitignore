@@ -1,4 +1,0 @@
-# Ignore bundles as they are handled by Vundle
-*
-!Vundle.vim
-!.gitignore
