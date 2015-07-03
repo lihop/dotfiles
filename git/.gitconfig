@@ -1,0 +1,9 @@
+[user]
+	email = git@leroy.geek.nz
+	name = Leroy Hopson
+[core]
+	editor = vim
+[push]
+	default = simple
+[alias]
+	undo-commit = reset --soft HEAD^
