@@ -7,8 +7,14 @@ with pkgs; rec {
     vam.knownPlugins = vimPlugins;
     vam.pluginDictionaries = [
       { names = [
-          "latex-live-preview"
+          "CSApprox"
+          "Colour-Sampler-Pack"
+          "changeColorScheme-vim"
           "fugitive"
+          "latex-live-preview"
+          "random-vim"
+          "sleuth"
+          "vim-addon-vim2nix"
         ]; }
     ];
     customRC = vimrc.config;

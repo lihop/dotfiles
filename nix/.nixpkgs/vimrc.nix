@@ -10,8 +10,8 @@
         syntax enable 
         " Set 256 color terminal support
         set t_Co=256
-        set background=dark
-        silent! colorscheme molokai 
+        " Pseudo-randomly  load a color scheme every time vim starts
+        colorscheme random
     endif
     
     if has("autocmd")
