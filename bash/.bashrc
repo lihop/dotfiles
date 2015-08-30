@@ -17,4 +17,8 @@ PATH=$PATH:~/usr/bin:~/.dynamic-colors/bin
 # Use previous color scheme
 dynamic-colors init
 
-alias maven="/nix/store/xbj41xqbns5mbk4h5nkc7z6bl4k795n3-oraclejdk-8u31/bin/java -Dmaven.home=/nix/store/2sml0hs53bnzg0hhzkvyc0di9ndlhl4z-apache-maven-3.2.5 -Dclassworlds.conf=/nix/store/2sml0hs53bnzg0hhzkvyc0di9ndlhl4z-apache-maven-3.2.5/bin/m2.conf -Didea.launcher.port=7535 -Didea.launcher.bin.path=/nix/store/jaygjklmbiz4g07wnm8psrwfgl47p4kb-idea-community-14.0.3/idea-community-14.0.3/bin -Dfile.encoding=UTF-8 -classpath /nix/store/2sml0hs53bnzg0hhzkvyc0di9ndlhl4z-apache-maven-3.2.5/boot/plexus-classworlds-2.5.2.jar:/nix/store/jaygjklmbiz4g07wnm8psrwfgl47p4kb-idea-community-14.0.3/idea-community-14.0.3/lib/idea_rt.jar com.intellij.rt.execution.application.AppMain org.codehaus.classworlds.Launcher -Didea.version=14.0.3"
+mvn_path=$(readlink -f $(which mvn))
+idea_path=$(readlink -f $(which idea-community))
+tmp_var=${idea_path#*community-}
+idea_version=${tmp_var%/bin*}
+alias maven="$(readlink -f $(which java)) -Dmaven.home=${mvn_path%/bin/mvn} -Dclassworlds.conf=${mvn_path%/mvn}/m2.conf -Didea.launcher.port=7535 -Didea.launcher.bin.path=${idea_path%/idea-community} -Dfile.encoding=UTF-8 -classpath ${mvn_path%/bin/mvn}/boot/plexus-classworlds-2.5.2.jar:${idea_path%/bin/idea-community}/idea-community-$idea_version/lib/idea_rt.jar com.intellij.rt.execution.application.AppMain org.codehaus.classworlds.Launcher -Didea.version=$idea_version"
