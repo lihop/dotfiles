@@ -12,10 +12,15 @@ set -o vi
 
 export VISUAL=vim
 export EDITOR=$VISUAL
-PATH=$PATH:~/usr/bin:~/.dynamic-colors/bin
+PATH=$PATH:~/usr/bin
 
-# Use previous color scheme
-dynamic-colors init
+# Choose a random color scheme
+# Note: because dotfiles are being handled by stow Xcolors and
+# Xresources are symbolic links, so they need to be handled
+# accordingly when invoking the find and sed commands.
+colorscheme=$(find -L ~/.Xcolors | shuf -n 1)
+sed -i --follow-symlinks "1s|.*|#include \"${colorscheme}\"|g" ~/.Xresources
+xrdb -merge ~/.Xresources
 
 mvn_path=$(readlink -f $(which mvn))
 idea_path=$(readlink -f $(which idea-community))

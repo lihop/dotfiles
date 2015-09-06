@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 DOTFILES_SRC=git@github.com:lihop/dotfiles.git
 DOTFILES_DIR=$HOME/.dotfiles
@@ -15,6 +15,7 @@ update() {
         cd $DOTFILES_DIR
         git pull
     fi
+    rm ~/.Xresources # Remove to avoid conflicts
     for dir in */; do
         stow $dir
     done
