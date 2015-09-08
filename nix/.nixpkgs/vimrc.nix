@@ -13,6 +13,16 @@
         " Pseudo-randomly  load a color scheme every time vim starts
         colorscheme random
     endif
+
+    function StripTrailingWhitespace()
+        if !&binary && &filetype != 'diff'
+          normal mz
+          normal Hmy
+          %s/\s\+$//e
+          normal 'yz<CR>
+          normal `z
+        endif
+    endfunction
     
     if has("autocmd")
         " Don't replace tabs with spaces in Makefile
