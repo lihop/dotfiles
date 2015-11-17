@@ -28,7 +28,7 @@
         " Don't replace tabs with spaces in Makefile
         autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
         " Automatically strip traling whitespace on file save
-        autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt :call StripTrailingWhitespace() 
+        autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt,*.elm,*.hs :call StripTrailingWhitespace() 
         " Don't treat json as javascript
         autocmd BufRead,BufNewFile *.json set filetype=json
     endif
