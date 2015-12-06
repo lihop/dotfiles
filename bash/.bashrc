@@ -29,3 +29,10 @@ idea_version=${tmp_var%/bin*}
 alias maven="$(readlink -f $(which java)) -Dmaven.home=${mvn_path%/bin/mvn} -Dclassworlds.conf=${mvn_path%/mvn}/m2.conf -Didea.launcher.port=7535 -Didea.launcher.bin.path=${idea_path%/idea-community} -Dfile.encoding=UTF-8 -classpath ${mvn_path%/bin/mvn}/boot/plexus-classworlds-2.5.2.jar:${idea_path%/bin/idea-community}/idea-community-$idea_version/lib/idea_rt.jar com.intellij.rt.execution.application.AppMain org.codehaus.classworlds.Launcher -Didea.version=$idea_version"
 
 alias lock="xscreensaver-command --lock"
+
+# In order for stack to work with NixOS, the linker needs to be able to find
+# libz.so. One way to do this is the method used below.
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(nix-build --no-out-link "<nixpkgs>" -A zlib)/lib
+
+# Stack places binaries in ~/.local/bin, so add that location to PATH here
+export PATH=$PATH:~/.local/bin
