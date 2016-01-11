@@ -36,3 +36,6 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(nix-build --no-out-link "<nixpkgs>" -A
 
 # Stack places binaries in ~/.local/bin, so add that location to PATH here
 export PATH=$PATH:~/.local/bin
+
+# Because we're using nix on the macbook we need to include the following: 
+. /Users/leroy/.nix-profile/etc/profile.d/nix.sh
