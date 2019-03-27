@@ -1,6 +1,7 @@
 import XMonad
 import Data.Monoid
 import System.Exit
+import XMonad.Config.Desktop
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import XMonad.Hooks.ManageDocks
@@ -32,7 +33,7 @@ myBorderWidth   = 1
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
 --
-myModMask       = mod5Mask
+myModMask       = mod1Mask
  
 -- NOTE: from 0.9.1 on numlock mask is set automatically. The numlockMask
 -- setting should be removed from configs.
@@ -81,13 +82,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- rotate screen left
     [ ((modm,               xK_semicolon), spawn "xrandr --output LVDS1 --rotate left")
     --rotate screen normal
-    , ((modm,               xK_a     ), spawn "xrandr --output LVDS1 --rotate normal")
+    , ((modm,               xK_a     ), spawn "[[ $(setxkbmap -query | grep dvp) ]] && setxkbmap us || setxkbmap us -variant dvp")
     -- launch a terminal
     , ((modm,               xK_t     ), spawn "urxvt")
     
-    -- Show\hide taskbar
-    , ((modm,               xK_b     ), sendMessage ToggleStruts)
- 
     -- Launch dmenu_run
     , ((modm,               xK_r     ), spawn "dmenu_run -b -nb '#A7FC00' -nf '#000000' -sb '#91A3B0' -sf '#000000' -fn '-misc-fixed-*-*-*-*-14-*-*-*-*-*-*-*'" )
  
@@ -146,7 +144,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
     --
-    -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
+    , ((modm              , xK_b     ), sendMessage ToggleStruts)
  
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
@@ -226,7 +224,6 @@ myManageHook = composeAll
 ------------------------------------------------------------------------
 -- Log rules:
 --
-myCandyBar = "candybar"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -234,8 +231,8 @@ myCandyBar = "candybar"
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-    candyBar <- spawnPipe myCandyBar
-    xmonad $ defaultConfig
+    xmproc <- spawnPipe "xmobar"
+    xmonad $ desktopConfig
         { 
         -- simple stuff
         terminal           = myTerminal,
