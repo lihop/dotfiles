@@ -23,6 +23,9 @@ let
   };
 in
 with pkgs; rec {
+  allowUnfree = true;
+  allowUnsupportedSystem = true;
+
   vimrcConfig = {
     vam.knownPlugins = vimPlugins // customPlugins;
     vam.pluginDictionaries = [

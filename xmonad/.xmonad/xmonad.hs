@@ -33,7 +33,7 @@ myBorderWidth   = 1
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
 --
-myModMask       = mod1Mask
+myModMask       = mod3Mask
  
 -- NOTE: from 0.9.1 on numlock mask is set automatically. The numlockMask
 -- setting should be removed from configs.
@@ -81,8 +81,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
  
     -- rotate screen left
     [ ((modm,               xK_semicolon), spawn "xrandr --output LVDS1 --rotate left")
-    --rotate screen normal
-    , ((modm,               xK_a     ), spawn "[[ $(setxkbmap -query | grep dvp) ]] && setxkbmap us || setxkbmap us -variant dvp")
+    -- toggle keymap
+    , ((modm .|. shiftMask, xK_a     ), spawn "[[ $(setxkbmap -query | grep dvp) ]] && setxkbmap us && xmodmap ~/.Xmodmap || setxkbmap us -variant dvp && xmodmap ~/.Xmodmap")
     -- launch a terminal
     , ((modm,               xK_t     ), spawn "urxvt")
     
@@ -172,7 +172,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_g, xK_y] [0..]
+        | (key, sc) <- zip [xK_y, xK_g] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
  
  
@@ -231,7 +231,7 @@ myManageHook = composeAll
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-    xmproc <- spawnPipe "xmobar"
+    -- DISABLE XMOBAR xmproc <- spawnPipe "xmobar"
     xmonad $ desktopConfig
         { 
         -- simple stuff

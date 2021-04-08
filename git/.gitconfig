@@ -1,9 +1,21 @@
 [user]
 	email = git@leroy.geek.nz
 	name = Leroy Hopson
+	signingKey = CB4E7DEE
 [core]
 	editor = vim
 [push]
 	default = simple
 [alias]
 	undo-commit = reset --soft HEAD^
+[diff]
+	noprefix = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[commit]
+	gpgSign = true
+[http]
+	postBuffer = 524288000

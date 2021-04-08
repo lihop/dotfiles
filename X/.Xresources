@@ -1,4 +1,4 @@
-# this line will be replaced
+#include "/home/leroy/.Xcolors/Rippedcasts.xrdb"
 
 URxvt*color0:       Ansi_0_Color
 URxvt*color1:       Ansi_1_Color
@@ -26,5 +26,5 @@ URxvt*cursorColor:  Cursor_Color
 URxvt.dynamicColors: on
 URxvt.scrollBar: false
 URxvt.saveLines: 8192
-URxvt.font: xft:Meslo LG M DZ:pixelsize=14:Antialias=false
-URxvt.boldFont: xft:Meslo LG M DZ:pixelsize=14:style=Bold:Antialias=false
+URxvt.font: xft:Meslo LG M DZ:pixelsize=14:Antialias=false, xft:Noto Emoji:pixelsize=14
+URxvt.boldFont: xft:Meslo LG M DZ:pixelsize=14:style=Bold:Antialias=false, xft:Noto Emoji:pixelsize=14

@@ -1,9 +1,9 @@
 Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
        , additionalFonts = []
-       , borderColor = "black"
+       , borderColor = "darkgrey"
        , border = TopB
-       , bgColor = "black"
-       , fgColor = "grey"
+       , bgColor = "darkgrey"
+       , fgColor = "black"
        , alpha = 255
        , position = Top
        , textOffset = -1
@@ -15,14 +15,14 @@ Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
        , iconRoot = "."
        , allDesktops = True
        , overrideRedirect = True
-       , commands = [ Run Weather "EGPF" ["-t","<station>: <tempC>C",
+       , commands = [ Run Weather "VVDN" ["-t","<station>: <tempC>C",
                                           "-L","18","-H","25",
                                           "--normal","green",
                                           "--high","red",
                                           "--low","lightblue"] 36000
-                    , Run Network "eth0" ["-L","0","-H","32",
+                    , Run Network "enp6s0f1" ["-L","0","-H","32",
                                           "--normal","green","--high","red"] 10
-                    , Run Network "eth1" ["-L","0","-H","32",
+                    , Run Network "wlp0s20f3" ["-L","0","-H","32",
                                           "--normal","green","--high","red"] 10
                     , Run Cpu ["-L","3","-H","50",
                                "--normal","green","--high","red"] 10
@@ -30,10 +30,16 @@ Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
                     , Run Swap [] 10
                     , Run Com "uname" ["-s","-r"] "" 36000
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+		    , Run Battery [
+			"-t","Batt: <acstatus>",
+			"--",
+			"-o","<left>% (<timeleft>)",
+			"-O","<fc=#005500>Charging</fc> <left>%"
+                    ] 50
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%cpu% | %memory% * %swap% | %eth0% - %eth1% }\
-                    \{ <fc=#ee9a00>%date%</fc>| %EGPF% | %uname%"
+       , template = "%cpu% | %memory% * %swap% | %enp6s0f1% - %wlp0s20f3% }\
+                    \{ <fc=#0e0a02>%date%</fc>| %VVDN% | %uname% | %battery%"
        }
 

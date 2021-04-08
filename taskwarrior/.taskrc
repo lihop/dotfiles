@@ -29,3 +29,4 @@ data.location=~/.task
 #include /nix/store/z99zz7nf9ja1vpsr89qjjwy12scfaj4b-taskwarrior-2.5.0/share/doc/task/rc/solarized-light-256.theme
 #include /nix/store/z99zz7nf9ja1vpsr89qjjwy12scfaj4b-taskwarrior-2.5.0/share/doc/task/rc/no-color.theme
 
+Update/clean=and push nixos
